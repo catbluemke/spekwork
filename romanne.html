@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    body{
+      width:100vw;
+      height:100vh;
+      margin:0;
+    }
+    #title{
+      position:fixed;
+      width:100%;
+      /*height:100%;*/
+      margin-top:20%;
+      color: rgba(1,1,1,0.5);
+      text-shadow:0px 0px 1px rgba(0,0,0,0);
+      transition: text-shadow 5s,font-size 20s,margin-top 10s;
+      text-align: center;
+    }
+
+    #title:hover {
+      text-shadow:0px 0px 20px white;
+      font-size:25vw;
+      margin-top:0;
+    }
+    #subtitle{
+      position:fixed;
+      bottom:10px;
+      color:white;
+    }
+  </style>
+</head>
+<body>
+  <div id="title">
+    <h1>HAPPY BIRTHDAY MR ROMANNE <3</h1>
+  </div>
+  <div id="player">
+  </div>
+  <div id="subtitle">
+    <h3>luv, from jonny</h3>
+  </div>
+
+</body>
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript">
+
+    var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '100%',
+    width: '100%',
+    videoId: '6W5pq4bIzIw',
+    playerVars: {rel: 0, showinfo: 0, ecver: 2},
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+function onPlayerReady(event) {
+  loopStart();
+  player.playVideo();
+}
+function loopStart() {
+  player.seekTo(114.5); // Start at 7 seconds
+}
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING) {
+    setTimeout(loopStart, 2400); // After 5 seconds, restart the loop
+  }
+}
+
+  
+  </script>
+</html>
